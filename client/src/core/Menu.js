@@ -23,10 +23,38 @@ const Menu = () => {
         </li>
 
         <li className="nav-item">
-          <Link className="nav-link" style={isActive(location, "/dashboard")} to="/dashboard">
-            Dashboard
+          <Link
+            className="nav-link"
+            style={isActive(location, "/shop")}
+            to="/shop"
+          >
+            Shop
           </Link>
         </li>
+
+        {isAuthenticated() && isAuthenticated().user.role === 0 && (
+          <li className="nav-item">
+            <Link
+              className="nav-link"
+              style={isActive(location, "/user/dashboard")}
+              to="/user/dashboard"
+            >
+              Dashboard
+            </Link>
+          </li>
+        )}
+
+        {isAuthenticated() && isAuthenticated().user.role === 1 && (
+          <li className="nav-item">
+            <Link
+              className="nav-link"
+              style={isActive(location, "/admin/dashboard")}
+              to="/admin/dashboard"
+            >
+              Dashboard
+            </Link>
+          </li>
+        )}
 
         {!isAuthenticated() && (
           <>

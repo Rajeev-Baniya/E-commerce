@@ -174,10 +174,10 @@ exports.listCategories = (req, res) => {
 //list by search
 
 exports.listBySearch = (req, res) => {
-  let order = req.query.order ? req.query.order : "desc";
-  let sortBy = req.query.sortBy ? req.query.sortBy : "_id";
-  let limit = req.query.limit ? parseInt(req.query.limit) : 6;
-  let skip = req.query.skip ? parseInt(req.query.skip) : 0;
+  let order = req.body.order ? req.body.order : "desc";
+  let sortBy = req.body.sortBy ? req.body.sortBy : "_id";
+  let limit = req.body.limit ? parseInt(req.body.limit) : 6;
+  let skip = req.body.skip ? parseInt(req.body.skip) : 0;
   let findArgs = {};
 
   // console.log(order, sortBy, limit, skip, req.body.filters);

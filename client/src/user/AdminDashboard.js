@@ -3,25 +3,25 @@ import Layout from "../core/Layout";
 import { isAuthenticated } from "../auth";
 import { Navigate, Link } from "react-router-dom";
 
-const UserDashboard = () => {
+const AdminDashboard = () => {
   const {
     user: { _id, name, email, role },
   } = isAuthenticated();
 
-  const userLinks = () => {
+  const adminLinks = () => {
     return (
       <div className="card">
-        <h4 className="card-header"> User Links</h4>
+        <h4 className="card-header"> Admin Links</h4>
         <ul className="list-group">
           <li className="list-group-item">
-            <Link to="/cart" className="nav-link">
+            <Link to="/create/category" className="nav-link">
               {" "}
-              My Cart{" "}
+              Create Category{" "}
             </Link>
           </li>
           <li className="list-group-item">
-            <Link to="/profile/update" className="nav-link">
-              Update Profile
+            <Link to="/create/product" className="nav-link">
+              Create Product
             </Link>
           </li>
         </ul>
@@ -29,7 +29,7 @@ const UserDashboard = () => {
     );
   };
 
-  const userInfo = () => {
+  const adminInfo = () => {
     return (
       <div className="card mb-5">
         <h3 className="card-header">User Information</h3>
@@ -44,32 +44,18 @@ const UserDashboard = () => {
     );
   };
 
-  const purchaseHistory = () => {
-    return (
-      <div className="card mb-5">
-        <h3 className="card-header">Purchase History </h3>
-        <ul className="list-group">
-          <li className="list-group-item">history</li>
-        </ul>
-      </div>
-    );
-  };
-
   return (
     <Layout
       title="Dashboard"
-      description={`Good day ${name}`}
+      description={`Good day Admin, ${name}`}
       className="container-fluid"
     >
       <div className="row">
-        <div className="col-3">{userLinks()}</div>
-        <div className="col-9">
-          {userInfo()}
-          {purchaseHistory()}
-        </div>
+        <div className="col-3">{adminLinks()}</div>
+        <div className="col-9">{adminInfo()}</div>
       </div>
     </Layout>
   );
 };
 
-export default UserDashboard;
+export default AdminDashboard;
