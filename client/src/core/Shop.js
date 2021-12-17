@@ -36,6 +36,7 @@ const Shop = () => {
         setError(data.error);
       } else {
         setFilteredResults(data.data);
+        //console.log(data.size);
         setSize(data.size);
         setSkip(0);
         // console.log(filteredResults);

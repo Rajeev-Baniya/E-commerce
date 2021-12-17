@@ -199,12 +199,22 @@ const AddProduct = () => {
     );
   };
 
+  const goBack = () => {
+    return (
+      <div className="mt-5 text-center">
+        <Link to="/admin/dashboard" className="text-warning">
+          Back to Dashboard
+        </Link>
+      </div>
+    );
+  };
+
   return (
     <Layout
       title="Add a new product"
       description={`Good day Admin ${user.name}, ready to add a new Product?`}
     >
-      <div className="row">
+      <div className="">
         <div className="col-md-8 offset-md-2">
           {showLoading()}
           {showSuccess()}

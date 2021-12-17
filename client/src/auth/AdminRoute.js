@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Route, Routes, Navigate, Outlet } from "react-router-dom";
 import { isAuthenticated } from "./index";
 
-const AdminRoute = ({ component: Component, children, ...rest }) => {
+const AdminRoute = ({ children }) => {
   return (
     // <Routes>
     //   <Route
