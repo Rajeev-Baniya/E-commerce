@@ -12,7 +12,7 @@ import { isAuthenticated } from "./auth";
 import AdminRoute from "./auth/AdminRoute";
 import AddCategory from "./admin/AddCategory";
 import AddProduct from "./admin/AddProduct";
-
+import Product from "./core/Product";
 const Routers = () => {
   return (
     <BrowserRouter>
@@ -62,6 +62,7 @@ const Routers = () => {
             </AdminRoute>
           }
         />
+        <Route path="/product/:productId" exact element={<Product />} />
       </Routes>
     </BrowserRouter>
   );

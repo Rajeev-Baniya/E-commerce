@@ -42,17 +42,22 @@ const Home = () => {
       className="container-fluid"
     >
       <Search />
+      <hr />
       <h2 className="mb-4">New Arrivals</h2>
       <div className="row">
         {productsByArrival.map((product, i) => (
-          <Card key={i} product={product} />
+          <div key={i} className="col-md-4 mb-4">
+            <Card product={product} />
+          </div>
         ))}
       </div>
       <hr />
       <h2 className="mb-4">Best Sellers</h2>
       <div className="row">
         {productsBySell.map((product, i) => (
-          <Card key={i} product={product} />
+          <div key={i} className="col-md-4 mb-3">
+            <Card product={product} />
+          </div>
         ))}
       </div>
     </Layout>
