@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { signout, isAuthenticated } from "../auth/index";
+import { itemTotal } from "./cartHelpers";
 
 const isActive = (location, path) => {
   if (location.pathname === path) {
@@ -13,6 +14,7 @@ const isActive = (location, path) => {
 const Menu = () => {
   let location = useLocation();
   let navigate = useNavigate();
+
   return (
     <div>
       <ul className="nav nav-tabs bg-primary">
@@ -29,6 +31,19 @@ const Menu = () => {
             to="/shop"
           >
             Shop
+          </Link>
+        </li>
+
+        <li className="nav-item">
+          <Link
+            className="nav-link"
+            style={isActive(location, "/cart")}
+            to="/cart"
+          >
+            Cart{" "}
+            <sup>
+              <small className="cart-badge">{itemTotal()}</small>
+            </sup>
           </Link>
         </li>
 

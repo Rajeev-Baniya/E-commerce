@@ -13,6 +13,7 @@ import AdminRoute from "./auth/AdminRoute";
 import AddCategory from "./admin/AddCategory";
 import AddProduct from "./admin/AddProduct";
 import Product from "./core/Product";
+import Cart from "./core/Cart";
 const Routers = () => {
   return (
     <BrowserRouter>
@@ -63,6 +64,7 @@ const Routers = () => {
           }
         />
         <Route path="/product/:productId" exact element={<Product />} />
+        <Route path="/cart" exact element={<Cart />} />
       </Routes>
     </BrowserRouter>
   );

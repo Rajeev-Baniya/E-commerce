@@ -19,8 +19,6 @@ const Shop = () => {
 
   const init = () => {
     getCategories().then((data) => {
-      console.log(data);
-
       if (data.error) {
         setError(data.error);
       } else {
