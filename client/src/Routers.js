@@ -12,6 +12,7 @@ import { isAuthenticated } from "./auth";
 import AdminRoute from "./auth/AdminRoute";
 import AddCategory from "./admin/AddCategory";
 import AddProduct from "./admin/AddProduct";
+import Orders from "./admin/Orders";
 import Product from "./core/Product";
 import Cart from "./core/Cart";
 const Routers = () => {
@@ -63,6 +64,17 @@ const Routers = () => {
             </AdminRoute>
           }
         />
+
+        <Route
+          path="/admin/orders"
+          exact
+          element={
+            <AdminRoute>
+              <Orders />
+            </AdminRoute>
+          }
+        />
+
         <Route path="/product/:productId" exact element={<Product />} />
         <Route path="/cart" exact element={<Cart />} />
       </Routes>
