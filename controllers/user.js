@@ -1,4 +1,6 @@
 const User = require("../models/user");
+const { Order, CartItem } = require("../models/order");
+const { errorHandler } = require("../helpers/dbErrorHandler");
 
 exports.userById = (req, res, next, id) => {
   User.findById(id).exec((err, user) => {
@@ -20,7 +22,7 @@ exports.read = (req, res) => {
 
 exports.update = (req, res) => {
   User.findOneAndUpdate(
-    { id: req.profile._id },
+    { _id: req.profile._id },
     { $set: req.body },
     { new: true }
   ).exec((err, user) => {
@@ -63,4 +65,18 @@ exports.addOrderToUserHistory = (req, res, next) => {
       next();
     }
   );
+};
+
+exports.purchaseHistory = (req, res) => {
+  Order.find({ user: req.profile._id })
+    .populate("user", "_name")
+    .sort("-created")
+    .exec((err, orders) => {
+      if (err) {
+        return res.status(400).json({
+          error: errorHandler(err),
+        });
+      }
+      res.json(orders);
+    });
 };

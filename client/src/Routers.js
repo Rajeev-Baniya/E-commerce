@@ -15,6 +15,10 @@ import AddProduct from "./admin/AddProduct";
 import Orders from "./admin/Orders";
 import Product from "./core/Product";
 import Cart from "./core/Cart";
+import Profile from "./user/Profile";
+import ManageProducts from "./admin/ManageProducts";
+import UpdateProduct from "./admin/UpdateProduct";
+
 const Routers = () => {
   return (
     <BrowserRouter>
@@ -36,11 +40,43 @@ const Routers = () => {
         ></Route>
 
         <Route
+          path="/profile/:userId"
+          exact
+          element={
+            <PrivateRoute>
+              {" "}
+              <Profile />{" "}
+            </PrivateRoute>
+          }
+        ></Route>
+
+        {/* <Route
+          path="/profile/:userId"
+          exact
+          element={
+            <AdminRoute>
+              {" "}
+              <Profile />{" "}
+            </AdminRoute>
+          }
+        ></Route> */}
+
+        <Route
           path="/admin/dashboard"
           exact
           element={
             <AdminRoute>
               <AdminDashboard />
+            </AdminRoute>
+          }
+        />
+
+        <Route
+          path="/admin/products"
+          exact
+          element={
+            <AdminRoute>
+              <ManageProducts />
             </AdminRoute>
           }
         />
@@ -61,6 +97,15 @@ const Routers = () => {
           element={
             <AdminRoute>
               <AddProduct />
+            </AdminRoute>
+          }
+        />
+        <Route
+          path="/admin/product/update/:productId"
+          exact
+          element={
+            <AdminRoute>
+              <UpdateProduct />
             </AdminRoute>
           }
         />
